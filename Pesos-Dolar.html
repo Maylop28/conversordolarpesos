@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Covertidor de Pesos a Dolar</title>
+        <link rel="stylesheet" href="styl.css"/>
+        <link rel="stylesheet" href="cotizacion.js"/>
+        <script>
+            //function para obtener el precio del dolar desde la API
+    function obtenerPrecioDolar() {
+        fetch('https://api.exchangerate-api.com/v4/Iatest/USD')
+        .then(response => response.json())
+        .then(data => {
+            const precioDolar = data.rates.MXN; //Cambiar 'MXN' por la moneda deseada
+
+            //Actualizar el precio del dolar en el HTML
+
+            const precioDolarElemento = document.getElementByld('precio-dolar');
+            precioDolarElemento.innerText = precioDolar.ToFixed(2);//Mostrar el precio con dos decimales
+
+            // Realizar la cnversion cuando se ingresa un monto
+            const montolnput = document.getElementByld('monto');
+            const conversionElemento = document.getElementByld('conversion');
+
+            montolnput.addEventListener('input', () => {
+                const monto = parseFloat(montoInput.value);
+                const conversion = monto *precioDolar;
+
+                conversionElemento.innerText = conversion.toFixed(2);// Mostrar la conversion con dos decimales
+            });
+        })
+        .catch(error => console.log(error));
+            }
+            //Llaman a la funcion para obtener el precio del dolar al cargar la pagina ObtenerPrecioDolar();
+        </script>
+    </head>
+    <body>
+        <div class="contaneir"></div>
+     <form class="form" name="convertidor" onclick="calcular();">
+        <h2>Conversor <br>Precio del Dolar: 490 </h2>
+        <br>Cuantos pesos Tengo: <input type="text"id="" name="pesos" placeholder="Ingresa la cantidad de Pesos">
+        <hr>
+        <br>Convertidos a dolar son: <input type="text" id="" name="dolar" placeholder="El resultado aparecerá aquí" readonly >
+        <br>
+        <br><input class="button" type="button" value="CONVERTIDOR" onclick="calcular();">
+        <p><a class="link" href="Dolar-Pesos.html">convertidor de dolar a pesos</a></p>
+
+    </form>
+    </div>
+    </body>
+     <script>
+      function calcular()
+      {
+
+      var pes = (document.convertidor.pesos.value)*1;
+      if(pes == 0){alert( "No ha llenado el espacio de pesos ingrese un numero por favor.")}else{
+                                                                                                }
+      var tot = pes / 490;
+      tot = tot.toFixed(2);
+      
+      document.convertidor.dolar.value = tot;
+                                                                                             
+                         }    
+     </script>
+    </body>
+</html>

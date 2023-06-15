@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Title of the document</title>
+</head>
+<body>
+    <p>Precio del Dolar: $<span id="precio-dolar"></span></p>
+    <input type="number" id="monto" placeholder="Ingresa el monto">
+    <p>Coversion:$<span id="conversion"></span></p>
+    <script>
+        //function para obtener el precio del dolar desde la API
+    function obtenerPrecioDolar() {
+        fetch('https://api.exchangerate-api.com/v4/Iatest/USD')
+        .then(response => response.json())
+        .then(data => {
+            const precioDolar = data.rates.MXN; //Cambiar 'MXN' por la moneda deseada
+
+            //Actualizar el precio del dolar en el HTML
+
+            const precioDolarElemento = document.getElementByld('precio-dolar');
+            precioDolarElemento.innerText = precioDolar.ToFixed(2);//Mostrar el precio con dos decimales
+
+            // Realizar la cnversion cuando se ingresa un monto
+            const montolnput = document.getElementByld('monto');
+            const conversionElemento = document.getElementByld('conversion');
+
+            montolnput.addEventListener('input', () => {
+                const monto = parseFloat(montoInput.value);
+                const conversion = monto *precioDolar;
+
+                conversionElemento.innerText = conversion.toFixed(2);// Mostrar la conversion con dos decimales
+            });
+        })
+        .catch(error => console.log(error));
+            }
+            //Llaman a la funcion para obtener el precio del dolar al cargar la pagina ObtenerPrecioDolar();
+    </script>
+
+</body>
+</html>
