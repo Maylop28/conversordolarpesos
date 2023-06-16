@@ -1,53 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-	<title>Conversor de Dólares a Pesos</title>
-    <link rel="stylesheet" href="styl.css"/>
-    <link rel="stylesheet" href="cotizacion.js"/>
-	<link rel="stylesheet" href="conversion.api.html"/>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Conversor de Dólares a Pesos</title>
+    <link rel="stylesheet" href="styl.css" />
+  </head>
+  <body>
     <div class="contaneir"></div>
-     <form class="form" name="convertidor" onclick="calcular();">
-    <h2>Conversor de Dólares a Pesos</h2>
-	<br>
-	<br>Cuantos Dolares Tengo: <input type="text"id="dolares" name="pesos" placeholder="Ingresa la cantidad de Pesos">
-	<hr>
-	<br>Convertidos a Pesos son: <input type="text" id="pesos" name="dolar" placeholder="El resultado aparecerá aquí" readonly >
-	<br><input class="button" type="button" value="CONVERTIDOR" onclick="convertir();">
-    <p><a class="link" href="Pesos-Dolar.html">convertidor de Pesos a Dolar</a></p>
-	<script>
-		//function para obtener el precio del dolar desde la API
-		function obtenerPrecioDolar() {
-        fetch('https://v6.exchangerate-api.com/v6/a70de4720f4fdf678937118b/latest/USD')
-        .then(response => response.json())
-        .then(data => {
+    <div class="form" name="convertidor">
+      <h2>Conversor de Dólares a Pesos</h2>
+      <span class="precio-dolar"></span>
+      <br />
+      <br />Cuantos Dolares Tengo:
+      <input
+        type="text"
+        id="dolares"
+        name="pesos"
+        placeholder="Ingresa la cantidad de Pesos"
+      />
+      <hr />
+      <br />Convertidos a Pesos son:
+      <input
+        type="text"
+        id="pesos"
+        name="dolar"
+        placeholder="El resultado aparecerá aquí"
+        readonly
+      />
+      <br />
+      <button class="button">convertidor</button>
+      <p>
+        <a class="link" href="Pesos-Dolar.html">convertidor de Pesos a Dolar</a>
+      </p>
+    </div>
+   <!--  <script>
+      //function para obtener el precio del dolar desde la API
+      function obtenerPrecioDolar() {
+        fetch(
+          "https://v6.exchangerate-api.com/v6/a70de4720f4fdf678937118b/latest/USD"
+        )
+          .then((response) => response.json())
+          .then((data) => {
             const precioDolar = data.rates.MXN; //Cambiar 'MXN' por la moneda deseada
 
             //Actualizar el precio del dolar en el HTML
 
-            const precioDolarElemento = document.getElementByld('precio-dolar');
-            precioDolarElemento.innerText = precioDolar.ToFixed(2);//Mostrar el precio con dos decimales
+            const precioDolarElemento = document.getElementByld("precio-dolar");
+            precioDolarElemento.innerText = precioDolar.ToFixed(2); //Mostrar el precio con dos decimales
 
             // Realizar la cnversion cuando se ingresa un monto
-            const montolnput = document.getElementByld('monto');
-            const conversionElemento = document.getElementByld('conversion');
+            const montolnput = document.getElementByld("monto");
+            const conversionElemento = document.getElementByld("conversion");
 
-            montolnput.addEventListener('input', () => {
-                const monto = parseFloat(montoInput.value);
-                const conversion = monto *precioDolar;
+            montolnput.addEventListener("input", () => {
+              const monto = parseFloat(montoInput.value);
+              const conversion = monto * precioDolar;
 
-                conversionElemento.innerText = conversion.toFixed(2);// Mostrar la conversion con dos decimales
+              conversionElemento.innerText = conversion.toFixed(2); // Mostrar la conversion con dos decimales
             });
-        })
-        .catch(error => console.log(error));
-            }
-            //Llaman a la funcion para obtener el precio del dolar al cargar la pagina ObtenerPrecioDolar();
-		function convertir() {
-			let dolares = document.getElementById("dolares").value;
-			let pesos = dolares * 490;
-			document.getElementById("pesos").value = pesos;
-		}
-	</script>   
+          })
+          .catch((error) => console.log(error));
+      }
+      //Llaman a la funcion para obtener el precio del dolar al cargar la pagina ObtenerPrecioDolar();
+      function convertir() {
+        let dolares = document.getElementById("dolares").value;
+        let pesos = dolares * 490;
+        document.getElementById("pesos").value = pesos;
+      }
+    </script> -->
+    <script src="./js/fetchData.js" type="module"></script>
+  </body>
 </html>
