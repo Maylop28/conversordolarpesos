@@ -20,7 +20,7 @@
 	<script>
 		//function para obtener el precio del dolar desde la API
 		function obtenerPrecioDolar() {
-        fetch('https://api.exchangerate-api.com/v4/Iatest/USD')
+        fetch('https://v6.exchangerate-api.com/v6/a70de4720f4fdf678937118b/latest/USD')
         .then(response => response.json())
         .then(data => {
             const precioDolar = data.rates.MXN; //Cambiar 'MXN' por la moneda deseada
